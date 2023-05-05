@@ -154,6 +154,33 @@ public class Solution {
         
     }
 
+    //leetcode169. Majority Element
+    //https://leetcode.com/problems/majority-element/description/
+    public int majorityElement(int[] nums) {
+        //insert array elements into HashMap
+        HashMap<Integer,Integer> h=new HashMap<>();
+        for(int i=0;i<nums.length;i++){
+            if(h.containsKey(nums[i])){
+                h.put(nums[i],h.get(nums[i])+1);
+            }else{
+                h.put(nums[i],1);
+            }
+        }
+
+        for (Map.Entry<Integer, Integer> it : h.entrySet()) {
+            if (it.getValue() > (nums.length / 2)) {
+                return it.getKey();
+            }
+        }
+
+        return -1;
+
+        
+
+        
+        
+    }
+
 
     
 }

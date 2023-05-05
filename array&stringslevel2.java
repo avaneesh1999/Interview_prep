@@ -129,6 +129,31 @@ public class Solution {
         
     }
 
+    //977. Squares of a Sorted Array
+    //https://leetcode.com/problems/squares-of-a-sorted-array/
+    public int[] sortedSquares(int[] nums) {
+
+        int i=0;
+        int j=nums.length-1;
+
+        int[] ans =new int[nums.length];
+
+        for(int k=ans.length-1;k>=0;k--){
+            if(nums[i]*nums[i]>nums[j]*nums[j]){
+                ans[k]=nums[i]*nums[i];
+                i++;
+             
+            }else {
+                ans[k]=nums[j]*nums[j];
+                j--;
+                
+            }
+        }
+
+        return  ans;
+        
+    }
+
 
     
 }

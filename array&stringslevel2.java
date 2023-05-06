@@ -156,6 +156,8 @@ public class Solution {
 
     //leetcode169. Majority Element
     //https://leetcode.com/problems/majority-element/description/
+
+    //USIG HASHMAP
     public int majorityElement(int[] nums) {
         //insert array elements into HashMap
         HashMap<Integer,Integer> h=new HashMap<>();
@@ -178,6 +180,47 @@ public class Solution {
         
 
         
+        
+    }
+
+    //USING MOORE VOTING ALGO
+    public int majorityElement(int[] nums) {
+        
+        int val=nums[0];
+        int count=1;
+
+        // check valid candidate
+
+        for(int i=1;i<nums.length;i++){
+            if(nums[i]==val){
+                count++;
+            }else{
+                if(count>0){
+                    count--;
+                    
+
+                }else{
+                    val=nums[i];
+                    count=1;
+                    
+                }
+            }
+        }
+
+        // count of valid candidate;
+        int ans=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==val){
+                ans++;
+            }
+        }
+        //check majority element
+        if(ans>nums.length/2){
+            return val;
+        }
+
+        return -1;
+
         
     }
 

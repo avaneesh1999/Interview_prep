@@ -223,6 +223,74 @@ public class Solution {
 
         
     }
+    //229. Majority Element II
+    //https://leetcode.com/problems/majority-element-ii/description/
+
+    public boolean checkmajority(int n,int[]nums){
+        int count=0;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==n){
+                count++;
+            }
+        }
+        if(count>nums.length/3){
+            return true;
+        }
+        return false;
+    }
+
+    public List<Integer> majorityElement(int[] nums) {
+        
+        //intialize 
+        List<Integer> ans =new ArrayList<>();
+    
+
+        int val1=nums[0];
+        int count1=1;
+
+        int val2=nums[0];
+        int count2=0; // make sure you make count 2 =0
+
+        //mapping of triplets
+
+        int i=1;
+        while(i<nums.length){
+            if(nums[i]==val1){
+                count1++;
+            }else if(nums[i]==val2){
+                count2++;
+            }else{
+                if(count1==0){
+                    val1=nums[i];
+                    count1++;
+                }else if(count2==0){
+                    val2=nums[i];
+                    count2++;
+                }else{
+                    count1--;
+                    count2--;
+                }
+            }
+            i++;
+        }
+
+        //check if they appears more than n/3 in array.
+
+        if(checkmajority(val1,nums)){
+            ans.add(val1);
+        }
+        if(val1==val2) return ans;
+
+        if(checkmajority(val2,nums)){
+            ans.add(val2);
+        }
+
+        return ans;
+
+
+
+        
+    }
 
 
     

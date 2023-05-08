@@ -330,6 +330,32 @@ public class Solution {
 
         
     }
+    //Leetcode 747. Largest Number At Least Twice of Others
+    //https://leetcode.com/problems/largest-number-at-least-twice-of-others/description/
+
+    public int dominantIndex(int[] nums) {
+        // make max1 and max2 
+        int max1=Integer.MIN_VALUE;
+        int max2=Integer.MIN_VALUE;
+        int ans=-1;
+
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]>max1){
+                max2=max1;
+                max1=nums[i];
+                ans=i;
+            }else if(nums[i]>max2){
+                max2=nums[i];
+            }
+        }
+        // check largest element in the array is at least twice as much as every other number in the array
+        if(max1>=max2*2){
+            return ans;
+        }
+
+        return -1;
+        
+    }
 
 
     

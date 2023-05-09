@@ -357,6 +357,30 @@ public class Solution {
         
     }
 
+    //Leetcode 769. Max Chunks To Make Sorted
+    //https://leetcode.com/problems/max-chunks-to-make-sorted/description/
+    class Solution {
+        public int maxChunksToSorted(int[] arr) {
+            //we will use chaining technique 
+            //initialize chunk and maximpact of arr[i]
+    
+            int chunk=0;
+            int maximpact=-1;
+    
+            for(int i=0;i<arr.length;i++){
+                int val=arr[i];
+                //check max impact of that val on array
+                maximpact=Math.max(maximpact,val);
+                if(maximpact==i){
+                    chunk++;
+                }
+            }
+    
+            return chunk;
+            
+        }
+    }
+
 
     
 }

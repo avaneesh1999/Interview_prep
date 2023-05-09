@@ -381,6 +381,34 @@ public class Solution {
         }
     }
 
+    //768. Max Chunks To Make Sorted II
+    //https://leetcode.com/problems/max-chunks-to-make-sorted-ii/description/
+    public int maxChunksToSorted(int[] arr) {
+        int chunk=0;
+        // make left max and rigth min
+        // int[] leftmax=new int[arr.length];
+        int[] rightmin=new int[arr.length+1];
+        rightmin[arr.length]=Integer.MAX_VALUE;
+
+        for(int i=arr.length-1;i>=0;i--){
+            rightmin[i]=Math.min(rightmin[i+1],arr[i]);
+            
+        }
+
+        int leftmax=Integer.MIN_VALUE;
+        for(int i=0;i<arr.length;i++){
+            leftmax=Math.max(leftmax,arr[i]);
+            if(leftmax<=rightmin[i+1]){
+                chunk++;
+            }
+        }
+        return chunk;
+
+
+
+        
+    }
+
 
     
 }

@@ -409,6 +409,40 @@ public class Solution {
         
     }
 
+    //Leetcode 345. Reverse Vowels of a String
+    //https://leetcode.com/problems/reverse-vowels-of-a-string/description/
+    public static void reverse(char[] arr,int i,int j){
+        char temp=arr[i];
+        arr[i]=arr[j];
+        arr[j]=temp;
+    }
+    public String reverseVowels(String s) {
+        char[] arr=s.toCharArray();
+        int i=0;
+        int j=arr.length-1;
+
+        while(i<j){
+            if(vowels(arr[i]) && vowels(arr[j])){
+                reverse(arr,i,j);
+                i++;
+                j--;
+            }else if(vowels(arr[i])){
+                j--;
+            }else if(vowels(arr[j])){
+                i++;
+            }else{
+                i++;
+                j--;
+            }
+        }
+        return new String(arr);
+        
+    }
+
+    public static boolean vowels(char c){
+        return c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U';
+    }
+
 
     
 }

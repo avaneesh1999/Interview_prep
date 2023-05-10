@@ -442,6 +442,33 @@ public class Solution {
     public static boolean vowels(char c){
         return c == 'a' || c == 'A' || c == 'e' || c == 'E' || c == 'i' || c == 'I' || c == 'o' || c == 'O' || c == 'u' || c == 'U';
     }
+    //238. Product of Array Except Self
+    //https://leetcode.com/problems/product-of-array-except-self/description/
+
+    public int[] productExceptSelf(int[] nums) {
+        // make leftproduct arr
+        int[] leftparr = new int[nums.length];
+        int pr = 1;
+        for (int i = 0; i < leftparr.length; i++) {
+            leftparr[i] = pr;
+            pr *= nums[i];
+        }
+        
+        // make rightproduct arr
+        int[] rightparr = new int[nums.length];
+        int rp = 1;
+        for (int i = nums.length - 1; i >= 0; i--) {
+            rightparr[i] = rp;
+            rp *= nums[i];
+        }
+
+        // make result arr
+        int[] res = new int[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            res[i] = leftparr[i] * rightparr[i];
+        }
+
+        return res;
 
 
     

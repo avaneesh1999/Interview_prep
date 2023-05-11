@@ -469,6 +469,36 @@ public class Solution {
         }
 
         return res;
+    }
+
+    //wiggle sort
+    //https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/arrays-and-strings/wiggle-sort-1/ojquestion
+
+    public static void wiggleSort(int[] arr) {
+        // write your code here
+        for(int i=0;i<arr.length-1;i++){
+            if(i%2==0){
+                //if index is even
+                if(arr[i]>=arr[i+1]){
+                    swap(arr,arr[i],arr[i+1]);
+                }
+                
+            }else{
+                // if index is odd
+                if(arr[i]<=arr[i+1]){
+                    swap(arr,arr[i],arr[i+1]);
+                }
+                
+            }
+        }
+        
+      }
+      
+      public static void swap(int[]arr,int a,int b){
+          int temp=a;
+          a=b;
+          b=temp;
+      }
 
 
     

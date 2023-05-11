@@ -500,6 +500,40 @@ public class Solution {
           b=temp;
       }
 
+     //Leetcode 324. Wiggle Sort II 
+     //https://leetcode.com/problems/wiggle-sort-ii/description/
+
+
+      public void wiggleSort2(int[] nums) {
+        int n=nums.length;
+        int[] arr=new int[nums.length]; //duplicate arr
+        for(int i=0;i<n;i++){
+            arr[i]=nums[i];
+
+        }
+
+        //sort duplicate
+        Arrays.sort(arr);
+
+        //fill odd index
+        int i=1;
+        int j=n-1;
+        while(i<n){
+            nums[i]=arr[j];
+            j--;
+            i+=2;
+        }
+
+        //fill even index
+        i=0;
+        while(i<n){
+            nums[i]=arr[j];
+            j--;
+            i+=2;
+        }
+        
+    }
+
 
     
 }

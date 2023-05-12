@@ -534,6 +534,39 @@ public class Solution {
         
     }
 
+    //Leetcode795. Number of Subarrays with Bounded Maximum
+    //https://leetcode.com/problems/number-of-subarrays-with-bounded-maximum/description/
+    public int numSubarrayBoundedMax(int[] arr, int left, int right) {
+        int n=arr.length;
+        //intialize starting index and ending index on array
+        int si=0;
+        int ei=0;
+
+
+       //maintain count of prevvount of relevant subarrays
+        int prevc=0;
+        int count=0;
+
+        while(ei<n){
+            //case 1
+            if(arr[ei]>=left && arr[ei]<=right){
+                prevc=ei-si+1;
+                count+=prevc;
+            }else if(arr[ei]<left){ //case 2
+                count+=prevc;
+            }else{     //case 3(arr[ei]>right)
+                si=ei+1;
+                prevc=0;
+            }
+            ei++;
+
+
+        }
+        return count;
+
+        
+    }
+
 
     
 }

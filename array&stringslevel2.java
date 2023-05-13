@@ -566,6 +566,44 @@ public class Solution {
 
         
     }
+    //Leetcode 849. Maximize Distance to Closest Person
+    //https://leetcode.com/problems/maximize-distance-to-closest-person/description/
+
+    public int maxDistToClosest(int[] seats) {
+        // left part
+        int dist=0;
+        int indx=0;
+        int zeros=0;
+
+        while(seats[indx]!=1){
+            zeros++;
+            indx++;
+        }
+        indx++;
+        dist=zeros;
+        zeros=0;
+
+        //segmentation
+        while(indx<seats.length){
+            while(indx<seats.length && seats[indx]!=1){
+                zeros++;
+                indx++;
+            }
+            if(indx==seats.length){
+                break;
+
+            }
+            indx++;
+            dist=Math.max(dist,(zeros+1)/2);
+            zeros=0;
+            
+        }
+
+
+        //right part
+        return Math.max(zeros,dist);
+        
+    }
 
 
     
